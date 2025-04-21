@@ -1,0 +1,38 @@
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(31, 41, 55, 0.8);
+  backdrop-filter: blur(4px);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.social-button-facebook:hover {
+  background-color: #1877f2;
+}
+
+.social-button-twitter:hover {
+  background-color: #1da1f2;
+}
+
+.social-button-instagram:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-button-linkedin:hover {
+  background-color: #0077b5;
+}
+
+.social-button-tiktok:hover {
+  background: linear-gradient(45deg, #25f4ee, #000000, #fe2c55);
+}

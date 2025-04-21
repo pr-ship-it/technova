@@ -1,0 +1,273 @@
+/* Estilos para los botones sociales */
+
+/* Estilos comunes para todos los botones sociales */
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: rgba(31, 41, 55, 0.8);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Colores específicos para cada red social */
+.social-button-facebook {
+  background-color: rgba(59, 89, 152, 0.8);
+}
+
+.social-button-facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-button-twitter {
+  background-color: rgba(29, 161, 242, 0.8);
+}
+
+.social-button-twitter:hover {
+  background-color: #1da1f2;
+}
+
+.social-button-instagram {
+  background: linear-gradient(45deg, rgba(245, 133, 41, 0.8), rgba(221, 42, 123, 0.8), rgba(129, 52, 175, 0.8));
+}
+
+.social-button-instagram:hover {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+}
+
+.social-button-linkedin {
+  background-color: rgba(0, 119, 181, 0.8);
+}
+
+.social-button-linkedin:hover {
+  background-color: #0077b5;
+}
+
+.social-button-tiktok {
+  background-color: rgba(45, 45, 45, 0.8);
+}
+
+.social-button-tiktok:hover {
+  background-color: #2d2d2d;
+}
+
+/* Botones sociales en fila horizontal */
+.social-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Botones sociales en columna vertical */
+.social-buttons-column {
+  position: fixed;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 40;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.social-buttons-column-visible {
+  opacity: 1;
+}
+
+/* Botón social flotante para móviles */
+.floating-social-button {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 40;
+}
+
+.toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #d97706;
+  transform: scale(1.05);
+}
+
+.floating-social-menu {
+  position: absolute;
+  bottom: 4rem;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Drawer para botones sociales */
+.social-drawer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.social-drawer-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.social-drawer-content {
+  background-color: rgba(17, 24, 39, 0.95);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.social-drawer-container {
+  max-width: 28rem;
+  margin: 0 auto;
+}
+
+.social-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.social-drawer-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.social-drawer-close {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.social-drawer-close-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.social-drawer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.social-drawer-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-drawer-item-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.social-drawer-item-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.social-drawer-item-facebook {
+  background-color: rgba(59, 89, 152, 0.8);
+}
+
+.social-drawer-item-facebook:hover {
+  background-color: #3b5998;
+}
+
+.social-drawer-item-twitter {
+  background-color: rgba(29, 161, 242, 0.8);
+}
+
+.social-drawer-item-twitter:hover {
+  background-color: #1da1f2;
+}
+
+.social-drawer-item-instagram {
+  background: linear-gradient(45deg, rgba(245, 133, 41, 0.8), rgba(221, 42, 123, 0.8), rgba(129, 52, 175, 0.8));
+}
+
+.social-drawer-item-instagram:hover {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+}
+
+.social-drawer-item-linkedin {
+  background-color: rgba(0, 119, 181, 0.8);
+}
+
+.social-drawer-item-linkedin:hover {
+  background-color: #0077b5;
+}
+
+.social-drawer-item-tiktok {
+  background-color: rgba(45, 45, 45, 0.8);
+}
+
+.social-drawer-item-tiktok:hover {
+  background-color: #2d2d2d;
+}
+
+.social-drawer-item-full {
+  grid-column: span 2;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .social-buttons-column {
+    display: none;
+  }
+}
