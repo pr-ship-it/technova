@@ -8,7 +8,7 @@ export default function WhatsappButton() {
   const [isHovered, setIsHovered] = useState(false)
 
   // Número de WhatsApp (reemplazar con el número real)
-  const phoneNumber = "5551234567"
+  const phoneNumber = "9889071829"
 
   // Mensaje predeterminado (opcional)
   const message = "Hola! Me gustaría obtener más información sobre sus servicios."
@@ -17,7 +17,7 @@ export default function WhatsappButton() {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
   // Mostrar el botón después de un breve retraso
-  useEffect(() => {
+  useEffect(() => {         
     const timer = setTimeout(() => {
       setIsVisible(true)
     }, 1500)
