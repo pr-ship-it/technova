@@ -9,7 +9,7 @@ export default function OurJourney() {
       year: 2020,
       title: "El comienzo de un sueño",
       description:
-        "Todo comenzó en un pequeño apartamento durante la pandemia. Carlos Rodríguez, con solo una computadora y una visión clara, fundó TechNova AI para llevar soluciones tecnológicas avanzadas a negocios hispanos que estaban quedando rezagados en la transformación digital.",
+        "Todo comenzó en un pequeño apartamento durante la pandemia. Luis, con solo una computadora y una visión clara, fundó TechNova AI para llevar soluciones tecnológicas avanzadas a negocios hispanos que estaban quedando rezagados en la transformación digital.",
       icon: <Calendar className="w-6 h-6 text-blue-400" />,
       stats: "1 fundador, 3 clientes, 100% pasión",
       image: "/tech-executive-javier.png",
@@ -29,7 +29,7 @@ export default function OurJourney() {
       year: 2022,
       title: "Creciendo el equipo",
       description:
-        "El éxito de nuestros primeros proyectos nos permitió dar un paso crucial: contratar a nuestra primera empleada. Ana Martínez, una brillante ingeniera con PhD en Inteligencia Artificial, se unió como CTO para liderar nuestro desarrollo tecnológico y elevar nuestras soluciones a un nuevo nivel.",
+        "El éxito de nuestros primeros proyectos nos permitió dar un paso crucial: contratar a nuestra primera empleada. Ana Martínez, una brillante ingeniera en Inteligencia Artificial, se unió como CTO para liderar nuestro desarrollo tecnológico y elevar nuestras soluciones a un nuevo nivel.",
       icon: <Users className="w-6 h-6 text-purple-400" />,
       stats: "2 miembros del equipo, 25 clientes, 2 premios de innovación",
       image: "/coding-curly.png",
@@ -39,7 +39,7 @@ export default function OurJourney() {
       year: 2023,
       title: "Expansión y reconocimiento",
       description:
-        "Con una base de clientes en crecimiento y proyectos cada vez más ambiciosos, expandimos nuestro equipo nuevamente. Miguel Sánchez se unió como Director de Marketing, trayendo su experiencia en estrategias digitales multiculturales que nos ayudaron a conectar de manera más auténtica con nuestro mercado objetivo.",
+        "Con una base de clientes en crecimiento y proyectos cada vez más ambiciosos, expandimos nuestro equipo nuevamente. Ariel se unió como Director de Marketing, trayendo su experiencia en estrategias digitales multiculturales que nos ayudaron a conectar de manera más auténtica con nuestro mercado objetivo.",
       icon: <Award className="w-6 h-6 text-yellow-400" />,
       stats: "3 miembros del equipo, 50+ clientes, presencia en 3 países",
       image: "/confident-hispanic-marketer.png",
@@ -49,7 +49,7 @@ export default function OurJourney() {
       year: 2024,
       title: "Seguridad como prioridad",
       description:
-        "Con el aumento de ciberataques a empresas hispanas, identificamos una necesidad crítica en el mercado. Laura Gómez, ex-consultora de seguridad para el gobierno de EE.UU., se unió a nuestro equipo como Jefa de Ciberseguridad, completando nuestra visión de ofrecer soluciones tecnológicas integrales y seguras.",
+        "Con el aumento de ciberataques a empresas hispanas, identificamos una necesidad crítica en el mercado. Ivan G, ex-consultor de seguridad , se unió a nuestro equipo como Jefe de programacion, completando nuestra visión de ofrecer soluciones tecnológicas integrales y seguras.",
       icon: <Zap className="w-6 h-6 text-red-400" />,
       stats: "4 miembros del equipo, 100+ clientes, 5 soluciones tecnológicas patentadas",
       image: "/confident-cybersecurity-analyst.png",
