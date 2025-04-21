@@ -385,12 +385,127 @@ export default function FeaturedAIService() {
           </div>
 
           <div className="relative">
-          <div className="w-full aspect-square relative">
-               
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative z-10"
+            >
+              {/* Círculo central con efecto de pulso */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-blue-500/10 flex items-center justify-center">
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+                  className="absolute inset-0 rounded-full border border-blue-500/30"
+                ></motion.div>
+                <motion.div
+                  animate={{ scale: [1.1, 1.3, 1.1], opacity: [0.5, 0.8, 0.5] }}
+                  transition={{ duration: 4, delay: 0.5, repeat: Number.POSITIVE_INFINITY }}
+                  className="absolute inset-0 rounded-full border border-blue-500/20"
+                ></motion.div>
+                <motion.div
+                  animate={{ scale: [1.2, 1.4, 1.2], opacity: [0.3, 0.6, 0.3] }}
+                  transition={{ duration: 4, delay: 1, repeat: Number.POSITIVE_INFINITY }}
+                  className="absolute inset-0 rounded-full border border-blue-500/10"
+                ></motion.div>
 
-            <video style={{borderRadius:"20px"}} src="https://player.vimeo.com/video/1077381495?h=71058eb8ec" autoPlay loop />
-    
-               </div>
+                <div className="relative">
+                  <motion.div
+                    animate={{
+                      rotateY: 360,
+                      rotateX: 15,
+                      rotateZ: -15,
+                    }}
+                    transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                    style={{ transformStyle: "preserve-3d" }}
+                    className="w-20 h-20 relative"
+                  >
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Cpu className="w-10 h-10 text-blue-400" />
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+
+              {/* Características orbitando */}
+              <div className="w-full aspect-square relative">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 40, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                  className="absolute inset-0"
+                >
+                  {features.map((feature, index) => {
+                    const angle = (index * 2 * Math.PI) / features.length
+                    const radius = 140
+                    const x = radius * Math.cos(angle)
+                    const y = radius * Math.sin(angle)
+
+                    return (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: index * 0.2, duration: 0.5 }}
+                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-x-[${x}px] translate-y-[${y}px]`}
+                        style={{
+                          transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                        }}
+                      >
+                        <motion.div
+                          animate={{
+                            scale: activeFeature === index ? [1, 1.05, 1] : 1,
+                            boxShadow:
+                              activeFeature === index
+                                ? [
+                                    "0 0 0 rgba(59, 130, 246, 0)",
+                                    "0 0 20px rgba(59, 130, 246, 0.5)",
+                                    "0 0 0 rgba(59, 130, 246, 0)",
+                                  ]
+                                : "0 0 0 rgba(59, 130, 246, 0)",
+                          }}
+                          transition={{ duration: 2, repeat: activeFeature === index ? Number.POSITIVE_INFINITY : 0 }}
+                          className={`w-16 h-16 rounded-2xl bg-gray-800/80 backdrop-blur-sm border ${activeFeature === index ? "border-blue-500" : "border-gray-700"} flex items-center justify-center relative overflow-hidden group cursor-pointer`}
+                          onClick={() => setActiveFeature(index)}
+                        >
+                          <div
+                            className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            style={{ background: `linear-gradient(135deg, ${feature.color}20, transparent)` }}
+                          ></div>
+                          <div className="relative z-10" style={{ color: feature.color }}>
+                            {feature.icon}
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    )
+                  })}
+                </motion.div>
+
+                {/* Líneas conectoras */}
+                <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+                  {features.map((_, index) => {
+                    const angle = (index * 2 * Math.PI) / features.length
+                    const radius = 140
+                    const x = radius * Math.cos(angle)
+                    const y = radius * Math.sin(angle)
+
+                    return (
+                      <motion.line
+                        key={index}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: activeFeature === index ? 0.8 : 0.2 }}
+                        x1="50%"
+                        y1="50%"
+                        x2={`calc(50% + ${x}px)`}
+                        y2={`calc(50% + ${y}px)`}
+                        stroke={features[index].color}
+                        strokeWidth="1"
+                        strokeDasharray={activeFeature === index ? "0" : "4 4"}
+                      />
+                    )
+                  })}
+                </svg>
+              </div>
+            </motion.div>
           </div>
         </div>
 

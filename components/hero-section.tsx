@@ -19,7 +19,7 @@ export default function HeroSection() {
           >
             <div className="w-full h-full relative overflow-hidden rounded-full">
               <LogoWithFallback
-                src="https://i.ibb.co/DDG1m3mY/ai-smart-logo.jpg"
+                src="https://res.cloudinary.com/dllkefj8m/image/upload/v1745273166/Texto_del_p%C3%A1rrafo_otxb9f.png"
                 alt="TechNova AI Logo"
                 width={320}
                 height={320}

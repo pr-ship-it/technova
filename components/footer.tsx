@@ -24,7 +24,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <Link href="/" className="flex items-center mb-4">
-              <img src="https://i.ibb.co/DDG1m3mY/ai-smart-logo.jpg" alt="TechNova AI Logo" className="rounded-full h-10 w-10 mr-2" />
+              <img src="https://res.cloudinary.com/dllkefj8m/image/upload/v1745273166/Texto_del_p%C3%A1rrafo_otxb9f.png" alt="TechNova AI Logo" className="rounded-full h-10 w-10 mr-2" />
               <h3 className="text-xl font-exo2 font-bold gold-text">TechNova AI</h3>
             </Link>
             <p className="text-gray-400 mb-4">{t("about.description").substring(0, 120)}...</p>
@@ -39,7 +39,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone size={16} className="mr-2 text-blue-500" />
-                <span>+1 (555) 123-4567</span>
+                <span>+52-998-9071829</span>
               </li>
             </ul>
             <div className="mt-4">

@@ -46,7 +46,7 @@ export default function LiveChat() {
     {
       keywords: ["contacto", "teléfono", "email", "correo", "llamar"],
       response:
-        "Puedes contactarnos al +1 (555) 123-4567 o enviarnos un correo a info@aismarttech.com. También puedes usar nuestro formulario de contacto en la página.",
+        "Puedes contactarnos al +52-998-9071829 o enviarnos un correo a info@aismarttech.com. También puedes usar nuestro formulario de contacto en la página.",
     },
     {
       keywords: ["gracias", "thank", "thanks"],
@@ -64,7 +64,7 @@ export default function LiveChat() {
       }
     }
 
-    return "Gracias por tu mensaje. Un miembro de nuestro equipo te responderá a la brevedad. Si necesitas asistencia inmediata, puedes llamarnos al +1 (555) 123-4567."
+    return "Gracias por tu mensaje. Un miembro de nuestro equipo te responderá a la brevedad. Si necesitas asistencia inmediata, puedes llamarnos al +52-998-9071829."
   }
 
   // Función para enviar mensaje

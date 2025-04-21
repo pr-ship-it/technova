@@ -67,9 +67,9 @@ export default function CtaSection() {
               >
                 <p className="text-lg mb-6 text-gray-300">
                   <span className="block font-bold text-white mb-2">AiSmartTechnology.com</span>
-                  info@aismarttech.com
+                  info@ 
                   <br />
-                  +1 (555) 123-4567
+                  +52-998-9071829
                 </p>
                 <a href="#contact" className="cta-button-gold inline-block mb-4">
                   {t("cta.button")}
