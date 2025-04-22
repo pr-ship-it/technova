@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import type { Partner } from "@/types/contract"
-import { CheckCircle, XCircle, Loader2, Building2 } from "lucide-react"
+import type { Partner, Signature } from "@/types/contract"
+import { CheckCircle, XCircle, Loader2 } from "lucide-react"
 
 interface SignatureSectionProps {
   partners: Partner[]
@@ -20,32 +20,20 @@ export function SignatureSection({ partners, signContract }: SignatureSectionPro
       setActivePartner(null)
     } catch (error) {
       console.error("Error al firmar:", error)
+      alert("Error al firmar. Por favor, intenta de nuevo.")
     } finally {
       setSigningInProgress(null)
     }
   }
 
-  // Verificar si todos los socios han firmado
   const allSigned = partners.every((partner) => partner.signed)
 
   return (
     <div className="space-y-6">
       <h3 className="text-xl font-semibold text-gold-500 mb-4">Firmas</h3>
 
-      {/* Reserva de la empresa */}
       <div className="mb-8 p-5 bg-blue-900/40 rounded-lg border border-blue-700">
-        <div className="flex items-center mb-4">
-          <Building2 className="text-gold-400 mr-3" size={24} />
-          <h4 className="text-lg font-semibold text-gold-400">Reserva para la Empresa (20%)</h4>
-        </div>
-
-        <p className="text-white/90 mb-4">
-          Al firmar este contrato, todos los socios acuerdan destinar el 20% de las ganancias totales como reserva para
-          la empresa, que será utilizada en campañas de marketing, recursos y otras necesidades operativas y de
-          crecimiento.
-        </p>
-
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mt-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 mt-4">
           {partners.map((partner) => (
             <div
               key={partner.id}
@@ -65,11 +53,11 @@ export function SignatureSection({ partners, signContract }: SignatureSectionPro
 
         {allSigned ? (
           <div className="mt-4 text-center text-green-400 font-medium">
-            Todos los socios han aceptado la reserva del 20% para la empresa
+            Todos las partes han aceptado
           </div>
         ) : (
           <div className="mt-4 text-center text-amber-400 font-medium">
-            Pendiente de aceptación por todos los socios
+            Pendiente de aceptación
           </div>
         )}
       </div>
@@ -107,14 +95,14 @@ export function SignatureSection({ partners, signContract }: SignatureSectionPro
               <div className="mt-4">
                 <div className="border-t border-green-500 pt-3 text-green-300">
                   <p className="font-signature text-xl">{partner.name}</p>
-                  <p className="text-sm mt-1">Firmado el: {partner.signatureDate?.toLocaleString("es-ES")}</p>
+                  <p className="text-sm mt-1">
+                    Firmado el: {partner.signatureDate?.toLocaleString("es-ES")}
+                  </p>
                 </div>
               </div>
             ) : activePartner === partner.id ? (
               <div className="mt-4 space-y-4">
-                <p className="text-sm text-blue-300">
-                
-                </p>
+                <p className="text-sm text-blue-300">Confirma tu firma para aceptar el contrato.</p>
                 <div className="flex justify-between gap-3">
                   <button
                     onClick={() => setActivePartner(null)}

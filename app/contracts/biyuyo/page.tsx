@@ -3,18 +3,17 @@
 import { useState, useEffect } from "react"
 import { ContractHeader } from "@/components/contract-header"
 import { ContractContent } from "@/components/contract-biyuyo"
-import { SignatureSection } from "@/components/signature-section"
-import { PDFDownload } from "@/components/pdf-download"
+import { SignatureSection } from "@/components/signatureTwoSection"
 
 import type { Partner, Signature } from "@/types/contract"
-import { getContractData, updatePartnerSignature, checkPartnersInitialized } from "@/lib/supabase"
+import { getContractData, updatePartnerSignature, checkPartnersInitialized } from "@/lib/supabaseDos"
 import { Loader2, AlertTriangle } from "lucide-react"
+import { PDFDownloadTwo } from "@/components/pdf-downloadTwo"
 
 export default function ContractBiyuyoPage() {
   const initialPartners: Partner[] = [
-    { id: 1, name: "Luis", signed: false, signatureDate: null },
-    { id: 2, name: "Ariel", signed: false, signatureDate: null },
-    { id: 3, name: "Pedro", signed: false, signatureDate: null },
+    { id: 1, name: "Technova AI", signed: true, signatureDate: null },
+    { id: 2, name: "Beyouyo", signed: false, signatureDate: null },
   ]
 
   const [partners, setPartners] = useState<Partner[]>(initialPartners)
@@ -24,10 +23,6 @@ export default function ContractBiyuyoPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [isOfflineMode, setIsOfflineMode] = useState(false)
-
-  // Podés reutilizar toda la lógica del useEffect y funciones acá
-  // Pero si querés que use otro contrato en la base de datos,
-  // deberías adaptar `getContractData()` para aceptar un identificador o tipo.
 
   useEffect(() => {
     async function loadData() {
@@ -172,21 +167,15 @@ export default function ContractBiyuyoPage() {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-950 to-blue-900 text-white">
       <main className="flex-grow container mx-auto px-4 py-8 max-w-4xl">
         {isOfflineMode && (
-          <div className="bg-amber-900/30 border border-amber-700 rounded-lg p-4 mb-6 flex items-start">
-            <AlertTriangle className="text-amber-400 mr-3 mt-0.5 flex-shrink-0" />
-            <div>
-              <h3 className="font-medium text-amber-300">Modo sin conexión</h3>
-              <p className="text-amber-200/80 text-sm mt-1">
-                No se pudo conectar a la base de datos. Las firmas se guardarán localmente en este dispositivo.
-              </p>
-            </div>
+          <div >
+           
           </div>
         )}
 
         <ContractHeader contractDate={contractDate} />
 
         <div className="bg-blue-900/50 backdrop-blur-sm rounded-lg shadow-xl p-6 mb-8 border border-blue-800">
-          <ContractContent partners={partners} />
+          <ContractContent partners={partners} signingPartners={partners} />
 
           <div className="mt-10">
             <h3 className="text-xl font-semibold text-gold-500 mb-4">Progreso de Firmas</h3>
@@ -209,7 +198,7 @@ export default function ContractBiyuyoPage() {
             </button>
 
             {allSigned ? (
-              <PDFDownload partners={partners} signatures={signatures} contractDate={contractDate} />
+              <PDFDownloadTwo partners={partners} signatures={signatures} contractDate={contractDate} />
             ) : (
               <div className="text-amber-300 italic">
                 Se habilitará la descarga cuando todos hayan firmado
@@ -218,7 +207,6 @@ export default function ContractBiyuyoPage() {
           </div>
         </div>
       </main>
-
     </div>
   )
 }

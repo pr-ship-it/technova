@@ -204,11 +204,7 @@ export default function ContractPage() {
           <div className="bg-amber-900/30 border border-amber-700 rounded-lg p-4 mb-6 flex items-start">
             <AlertTriangle className="text-amber-400 mr-3 mt-0.5 flex-shrink-0" />
             <div>
-              <h3 className="font-medium text-amber-300">Modo sin conexión</h3>
-              <p className="text-amber-200/80 text-sm mt-1">
-                No se pudo conectar a la base de datos. Las firmas se guardarán localmente en este dispositivo, pero no
-                se sincronizarán con otros dispositivos.
-              </p>
+        
             </div>
           </div>
         )}
