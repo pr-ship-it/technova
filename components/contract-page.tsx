@@ -5,7 +5,7 @@ import { ContractHeader } from "@/components/contract-header"
 import { ContractContent } from "@/components/contract-content"
 import { SignatureSection } from "@/components/signature-section"
 import { PDFDownload } from "@/components/pdf-download"
-import { Footer } from "@/components/footer"
+
 import type { Partner, Signature } from "@/types/contract"
 import { getContractData, updatePartnerSignature, checkPartnersInitialized } from "@/lib/supabase"
 import { Loader2, AlertTriangle } from "lucide-react"
@@ -249,7 +249,7 @@ export default function ContractPage() {
         </div>
       </main>
 
-      <Footer />
+ 
     </div>
   )
 }
