@@ -5,7 +5,9 @@ import AboutSection from "@/components/about-section"
 import TeamSection from "@/components/team-section"
 import TestimonialsSection from "@/components/testimonials-section"
 import CtaSection from "@/components/cta-section"
-import Footer from "@/components/footer"
+import { Footer } from "@/components/footer"
+
+
 
 export default function Home() {
   return (
@@ -14,7 +16,7 @@ export default function Home() {
       <HeroSection />
       <ServicesSection />
       <AboutSection />
-      <TestimonialsSection />
+     
       <TeamSection />
       <CtaSection />
       <Footer />

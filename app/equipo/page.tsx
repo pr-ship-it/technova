@@ -1,7 +1,8 @@
-import TeamSection from "@/components/team-section"
+
 import ContactSection from "@/components/contact-section"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import TestimonialsSection from "@/components/testimonials-section"
 
 export default function EquipoPage() {
   return (
@@ -13,7 +14,7 @@ export default function EquipoPage() {
         </Link>
       </div>
 
-      <TeamSection />
+       <TestimonialsSection />
 
       <div className="container mx-auto px-4 py-12 mb-12">
         <div className="max-w-3xl mx-auto bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-xl border border-gray-800">

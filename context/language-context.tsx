@@ -17,7 +17,7 @@ const translations = {
     "nav.services": "Servicios",
     "nav.about": "Nosotros",
     "nav.contact": "Contacto",
-    "nav.team": "Equipo",
+    "nav.team": "Reseñas",
 
     // Hero
     "hero.slogan": "Transforma tu Negocio con Inteligencia Artificial – Soluciones para el Retail Hispano",
@@ -98,24 +98,24 @@ const translations = {
 
     "team.ceo.name": "Luis H.",
     "team.ceo.position": "CEO & Fundador",
-    "team.ceo.description":
-      "Fundó TechNova AI tras identificar la brecha tecnológica en el mercado hispano. Ha liderado proyectos de IA para Fortune 500 y startups. Apasionado por democratizar la tecnología avanzada para negocios hispanos.",
-
-    "team.cto.name": "Ana Martínez",
+    "team.ceo.description":"   ",
+  
+    "team.cto.name": " Manu C.",
     "team.cto.position": "CTO",
-    "team.cto.description":
-      "Desarrolladora prodigio que programó su primer chatbot a los 16 años. PhD en Inteligencia Artificial de Stanford. Antes de unirse a nosotros, lideró equipos de ingeniería en Amazon y creó algoritmos de NLP específicamente optimizados para dialectos latinoamericanos y español conversacional.",
-
+    "team.cto.description":"   ",
     "team.marketing.name": "Ariel S.",
     "team.marketing.position": "Director de Marketing",
-    "team.marketing.description":
-      "Estratega digital con MBA de ESADE. Pionero en marketing multicultural. Experto en comportamiento del consumidor latino, combina análisis de datos con insights culturales para crear estrategias que resuenan auténticamente con audiencias hispanas.",
-
-    "team.security.name": "Ivan G.",
-    "team.security.position": "Jefe de Desarrollo",
-    "team.security.description":
-      "Ex-consultora de seguridad para el gobierno de EE.UU. y certificada en CISSP, CEH y blockchain. Especializada en protección de datos para retail y fintech. Ha frustrado más de 200 intentos de ciberataques y desarrollado protocolos de seguridad adoptados internacionalmente. Defensora de la privacidad digital como derecho fundamental.",
-  },
+    "team.marketing.description":"   ",
+      "team.AI.name": "Pedro P.",
+      "team.AI.position": "AI Developer",
+"team.AI.description": "   "
+      ,
+      "team.web.name": "Ivan C.",
+      "team.web.position": "WEB Developer",
+      "team.web.description":"   "
+      ,
+  
+    },
   en: {
     // Navbar
     "nav.home": "Home",

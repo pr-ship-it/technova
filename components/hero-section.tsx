@@ -11,22 +11,18 @@ export default function HeroSection() {
     <section id="home" className="min-h-screen flex items-center justify-center pt-20 pb-10 relative overflow-visible">
       <div className="container mx-auto px-4 z-20 relative">
         <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8 relative w-64 h-64 md:w-80 md:h-80 mx-auto"
-          >
-            <div className="w-full h-full relative overflow-hidden rounded-full">
-              <LogoWithFallback
-                src="https://res.cloudinary.com/dllkefj8m/image/upload/v1745273166/Texto_del_p%C3%A1rrafo_otxb9f.png"
-                alt="TechNova AI Logo"
-                width={320}
-                height={320}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </motion.div>
+        <div className="flex flex-col items-center text-center">
+
+    <div  style={{display:"absolute",top:"100px", filter: "drop-shadow(0 4px 8px rgba(7, 181, 250, 0.88))"}} className="w-full h-full relative overflow-hidden rounded-full">
+      <img
+        src="https://res.cloudinary.com/dllkefj8m/image/upload/v1745342459/Dise-o-sin-t-tulo-1--unscreen_ra8ewe.gif"
+        alt="Animated GIF"
+        className="w-[650px] h-[650px]"
+       
+      />
+    </div>
+  
+</div>
 
           {/* Título con la nueva fuente One Day */}
           <motion.div
