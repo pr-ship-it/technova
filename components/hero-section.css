@@ -1,0 +1,21 @@
+@keyframes shadowMove {
+    0% {
+      filter: drop-shadow(0 4px 8px rgba(7, 181, 250, 0.88));
+    }
+    25% {
+      filter: drop-shadow(4px 0 8px rgba(7, 181, 250, 0.88));
+    }
+    50% {
+      filter: drop-shadow(0 -4px 8px rgba(7, 181, 250, 0.88));
+    }
+    75% {
+      filter: drop-shadow(-4px 0 8px rgba(7, 181, 250, 0.88));
+    }
+    100% {
+      filter: drop-shadow(0 4px 8px rgba(7, 181, 250, 0.88));
+    }
+  }
+
+  .animate-shadow-move img {
+    animation: shadowMove 4s infinite linear;
+  }

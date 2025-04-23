@@ -19,7 +19,7 @@ export function ContractHeader({ contractDate }: ContractHeaderProps) {
         </div>
       </div>
 
-      <h2 className="text-2xl font-semibold mb-2">Contrato de Sociedad y Reparto de Utilidades</h2>
+      <h2 className="text-2xl font-semibold mb-2">Contrato de Servicio</h2>
 
       <p className="text-gold-300">Fecha: {formattedDate}</p>
     </div>

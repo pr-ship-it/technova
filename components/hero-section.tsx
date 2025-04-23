@@ -3,7 +3,7 @@
 import { useLanguage } from "@/context/language-context"
 import { motion } from "framer-motion"
 import LogoWithFallback from "./logo-with-fallback"
-
+import "./hero-section.css"
 export default function HeroSection() {
   const { t } = useLanguage()
 
@@ -13,14 +13,39 @@ export default function HeroSection() {
         <div className="flex flex-col items-center text-center">
         <div className="flex flex-col items-center text-center">
 
-    <div  style={{display:"absolute",top:"100px", filter: "drop-shadow(0 4px 8px rgba(7, 181, 250, 0.88))"}} className="w-full h-full relative overflow-hidden rounded-full">
-      <img
-        src="https://res.cloudinary.com/dllkefj8m/image/upload/v1745342459/Dise-o-sin-t-tulo-1--unscreen_ra8ewe.gif"
-        alt="Animated GIF"
-        className="w-[650px] h-[650px]"
-       
-      />
-    </div>
+        <div className="relative w-[350px] h-[350px] mx-auto animate-border-glow rounded-full">
+  <img
+    src="https://res.cloudinary.com/dllkefj8m/image/upload/v1745420643/brain_yesjdw.jpg"
+    alt="Animated GIF"
+    className="w-full h-full rounded-full"
+  />
+  <style jsx>{`
+    @keyframes glowMove {
+      0% {
+        box-shadow: 0 4px 20px rgba(7, 181, 250, 0.8);
+      }
+      25% {
+        box-shadow: 4px 0 20px rgba(7, 181, 250, 0.8);
+      }
+      50% {
+        box-shadow: 0 -4px 20px rgba(7, 181, 250, 0.8);
+      }
+      75% {
+        box-shadow: -4px 0 20px rgba(7, 181, 250, 0.8);
+      }
+      100% {
+        box-shadow: 0 4px 20px rgba(7, 181, 250, 0.8);
+      }
+    }
+
+    .animate-border-glow {
+      animation: glowMove 4s infinite linear;
+      
+      background-color: white;
+    }
+  `}</style>
+</div>
+
   
 </div>
 

@@ -27,7 +27,7 @@ export function PDFDownload({ partners, signatures, contractDate }: PDFDownloadP
 
       pdf.setFontSize(16)
       pdf.setTextColor(0, 0, 0)
-      pdf.text("Contrato de Sociedad y Reparto de Utilidades", 105, 30, { align: "center" })
+      pdf.text("Contrato de servicio", 105, 30, { align: "center" })
 
       // Fecha
       const formattedDate = new Intl.DateTimeFormat("es-ES", {

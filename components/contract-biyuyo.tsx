@@ -140,6 +140,8 @@ export function ContractContent({ partners, signingPartners }: ContractContentPr
             <ul className="list-disc pl-5 mt-2 space-y-1">
               <li><strong>El pago será realizado a la billetera RED TRON número:</strong></li>
               <li><strong style={{ color: "orange" }}>TJetmQE1b3vxMnnSkbHUGpRgS7oVFC5Dje</strong></li>
+              <li><strong>Tambien disponemos de cuenta bancaria STP TechNova Ai:</strong></li>
+              <li><strong style={{ color: "orange" }}>Cuenta clave: 646180146003580024</strong></li>
               <li>Recuerda enviar una captura de pantalla cuando el pago sea realizado.</li>
             </ul>
           </AccordionContent>

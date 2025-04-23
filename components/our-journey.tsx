@@ -12,7 +12,7 @@ export default function OurJourney() {
         "Todo comenzó en un pequeño apartamento durante la pandemia. Luis, con solo una computadora y una visión clara, fundó TechNova AI para llevar soluciones tecnológicas avanzadas a negocios hispanos que estaban quedando rezagados en la transformación digital.",
       icon: <Calendar className="w-6 h-6 text-blue-400" />,
       stats: "1 fundador, 3 clientes, 100% pasión",
-      image: "/tech-executive-javier.png",
+      image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745420643/brain_yesjdw.jpg",
       color: "from-blue-500/20 to-blue-600/20 border-blue-500/30",
     },
     {
