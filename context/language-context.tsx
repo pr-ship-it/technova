@@ -104,11 +104,11 @@ const translations = {
     "team.cto.position": "CTO",
     "team.cto.description":"   ",
     "team.marketing.name": "Ariel S.",
-    "team.marketing.position": "Director de Marketing",
+    "team.marketing.position": "MKT Director",
     "team.marketing.description":"   ",
       "team.AI.name": "Pedro P.",
       "team.AI.position": "AI Developer",
-"team.AI.description": "   "
+"team.AI.description": " "
       ,
       "team.web.name": "Ivan C.",
       "team.web.position": "WEB Developer",

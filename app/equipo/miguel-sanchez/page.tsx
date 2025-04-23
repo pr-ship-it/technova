@@ -4,8 +4,7 @@ export default function MiguelSanchezPage() {
   return (
     <TeamMemberDetail
       name="Miguel Sánchez"
-      position="Director de Marketing"
-      description="Estratega digital con MBA de ESADE. Pionero en marketing multicultural, desarrolló campañas virales para Nike y Coca-Cola en mercados hispanos."
+      position="Marketing Director"     description="Estratega digital con MBA de ESADE. Pionero en marketing multicultural, desarrolló campañas virales para Nike y Coca-Cola en mercados hispanos."
       longDescription={`Miguel Sánchez es un innovador en el campo del marketing digital con una especialización única en mercados hispanos. Con un MBA de ESADE Business School y una licenciatura en Comunicación, Miguel ha combinado su formación académica con un profundo entendimiento cultural para revolucionar cómo las marcas se conectan con audiencias hispanas.
 
       Antes de unirse a TechNova AI, Miguel trabajó en agencias de publicidad de primer nivel donde lideró campañas digitales para marcas globales como Nike, Coca-Cola y Samsung, enfocándose específicamente en mercados hispanos en Estados Unidos y Latinoamérica. Sus campañas se destacaron por su autenticidad cultural y resultados excepcionales, generando un 40% más de engagement que las campañas tradicionales.

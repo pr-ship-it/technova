@@ -22,7 +22,7 @@ export default function OurJourney() {
         "Tras meses de trabajo incansable, logramos nuestro primer cliente importante: una cadena de supermercados hispanos que necesitaba digitalizar sus operaciones. Este proyecto nos permitió demostrar el valor de nuestras soluciones y comenzar a construir nuestra reputación en el mercado.",
       icon: <TrendingUp className="w-6 h-6 text-green-400" />,
       stats: "1 fundador, 12 clientes, 300% crecimiento",
-      image: "/confident-latino-executive.png",
+      image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745421738/tech-recruiter_mreocw.webp",
       color: "from-green-500/20 to-green-600/20 border-green-500/30",
     },
     {
@@ -32,7 +32,7 @@ export default function OurJourney() {
         "El éxito de nuestros primeros proyectos nos permitió dar un paso crucial: contratar a nuestra primera empleada. Ana Martínez, una brillante ingeniera en Inteligencia Artificial, se unió como CTO para liderar nuestro desarrollo tecnológico y elevar nuestras soluciones a un nuevo nivel.",
       icon: <Users className="w-6 h-6 text-purple-400" />,
       stats: "2 miembros del equipo, 25 clientes, 2 premios de innovación",
-      image: "/coding-curly.png",
+      image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745421738/images_1_m4gku8.jpg",
       color: "from-purple-500/20 to-purple-600/20 border-purple-500/30",
     },
     {
@@ -42,7 +42,7 @@ export default function OurJourney() {
         "Con una base de clientes en crecimiento y proyectos cada vez más ambiciosos, expandimos nuestro equipo nuevamente. Ariel se unió como Director de Marketing, trayendo su experiencia en estrategias digitales multiculturales que nos ayudaron a conectar de manera más auténtica con nuestro mercado objetivo.",
       icon: <Award className="w-6 h-6 text-yellow-400" />,
       stats: "3 miembros del equipo, 50+ clientes, presencia en 3 países",
-      image: "/confident-hispanic-marketer.png",
+      image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745421738/images_i9um1i.jpg",
       color: "from-yellow-500/20 to-yellow-600/20 border-yellow-500/30",
     },
     {
@@ -52,7 +52,7 @@ export default function OurJourney() {
         "Con el aumento de ciberataques a empresas hispanas, identificamos una necesidad crítica en el mercado. Ivan G, ex-consultor de seguridad , se unió a nuestro equipo como Jefe de programacion, completando nuestra visión de ofrecer soluciones tecnológicas integrales y seguras.",
       icon: <Zap className="w-6 h-6 text-red-400" />,
       stats: "4 miembros del equipo, 100+ clientes, 5 soluciones tecnológicas patentadas",
-      image: "/confident-cybersecurity-analyst.png",
+      image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745421911/Tech-Security-Year-in-Review-2023-1_fgkcta.jpg",
       color: "from-red-500/20 to-red-600/20 border-red-500/30",
     },
     {
@@ -62,7 +62,7 @@ export default function OurJourney() {
         "Hoy, cinco años después de aquel modesto comienzo, TechNova AI se ha convertido en un referente en soluciones tecnológicas para el mercado hispano. Lo que comenzó como el sueño de una persona es ahora la realidad de un equipo apasionado que ha transformado digitalmente más de 100 negocios y sigue creciendo con la misma pasión del primer día.",
       icon: <TrendingUp className="w-6 h-6 text-blue-400" />,
       stats: "4 expertos dedicados, 120+ clientes satisfechos, impacto en miles de negocios hispanos",
-      image: "/vibrant-connections.png",
+      image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745421987/legal-tech-future_en_graphic-1_gyv5mq.png",
       color: "from-blue-500/20 to-purple-600/20 border-blue-500/30",
     },
   ]
@@ -124,8 +124,9 @@ export default function OurJourney() {
                       </div>
 
                       <div className="mt-4 md:mt-0 md:ml-6 md:flex-shrink-0">
-                        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/20">
+                        <div  style={{marginTop:"70px"}} className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/20">
                           <img
+                           
                             src={item.image || "/placeholder.svg"}
                             alt={item.title}
                             className="w-full h-full object-cover"

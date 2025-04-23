@@ -10,10 +10,10 @@ export default function AboutSection() {
     <section id="about"  className="py-20 relative">
       {/* Eliminamos el fondo con efecto radial */}
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 ">
         <motion.div
           className="max-w-3xl mx-auto text-center"
-         
+
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -26,7 +26,7 @@ export default function AboutSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            style={{backgroundColor:"rgba(118, 128, 153, 0.73)"}}
+            style={{backgroundColor:"rgba(61, 67, 83, 0.73)"}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-lg text-gray-300 leading-relaxed">{t("about.description")}</p>

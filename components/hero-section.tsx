@@ -56,7 +56,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="w-full mb-12 px-4 md:px-0"
           >
-            <h1 style={{color:"#F59E0B",fontSize:"30px",textShadow:"1px 2px 5px #F59E0B"}} className="gold-text-fixed mx-auto">TechNova AI</h1>
+            <h1 style={{color:"#F59E0B",fontSize:"30px",marginTop:"38px",textShadow:"1px 2px 5px #F59E0B"}} className="gold-text-fixed mx-auto">TechNova AI</h1>
           </motion.div>
 
           <motion.p

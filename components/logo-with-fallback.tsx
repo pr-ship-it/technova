@@ -16,6 +16,7 @@ export default function LogoWithFallback({
   width = 100,
   height = 100,
   className = "",
+  
 }: LogoWithFallbackProps) {
 
  
@@ -28,7 +29,7 @@ export default function LogoWithFallback({
       width={width}
       height={height}
       className={`${className} transition-opacity duration-300`}
-      
+      style={{borderRadius:"50%"}}
     />
   )
 }
