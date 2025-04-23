@@ -41,10 +41,7 @@ export default function Navigation() {
       name: t("nav.about"),
       href: "/about",
     },
-    {
-      name: t("nav.contact"),
-      href: "/contact",
-    },
+
   ]
 
   return (

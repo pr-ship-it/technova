@@ -71,11 +71,7 @@
                    {t("nav.team")}
                  </Link>
                </li>
-               <li>
-                 <Link href={getUrl("contact")} className="hover:text-blue-400 transition-colors">
-                   {t("nav.contact")}
-                 </Link>
-               </li>
+         
              </ul>
            </div>
          </div>

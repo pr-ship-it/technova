@@ -75,9 +75,7 @@ export default function Navbar() {
             <Link href="/equipo" className="nav-link">
               {t("nav.team")}
             </Link>
-            <Link href={getUrl("contact")} className="nav-link">
-              {t("nav.contact")}
-            </Link>
+          
 
             {/* Botón de WhatsApp en la barra de navegación */}
             <NavbarWhatsappButton />
@@ -132,9 +130,7 @@ export default function Navbar() {
             <Link href="/equipo" className="mobile-nav-link" onClick={() => setIsOpen(false)}>
               {t("nav.team")}
             </Link>
-            <Link href={getUrl("contact")} className="mobile-nav-link" onClick={() => setIsOpen(false)}>
-              {t("nav.contact")}
-            </Link>
+            
           </div>
         </motion.div>
       )}
