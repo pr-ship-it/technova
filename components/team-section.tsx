@@ -104,7 +104,7 @@ export default function TeamSection() {
       nameKey: "team.AI.name",
       positionKey: "team.AI.position",
       descriptionKey: "team.AI.description",
-      image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745338225/0846d870fbba7c2f89db4d497b86c663_rnv17u.jpg",
+      image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745436600/pedro_jo_yj7otc.jpg",
       delay: 0.4,
       email: "Ai@TechNova.com",
       slug: "Pedro C",
