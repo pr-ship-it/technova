@@ -542,8 +542,8 @@ export default function FeaturedAIService() {
                 </div>
                 <p className="text-gray-400 text-sm">{feature.description}</p>
                 <div className="mt-4 flex items-center text-sm font-medium" style={{ color: feature.color }}>
-                  <span>Explorar</span>
-                  <ChevronRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+                  
+                 
                 </div>
               </motion.div>
             ))}
