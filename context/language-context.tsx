@@ -98,24 +98,24 @@ const translations = {
 
     "team.ceo.name": "Luis H.",
     "team.ceo.position": "CEO & Fundador",
-    "team.ceo.description":"   ",
-  
-    "team.cto.name": " Manu C.",
+    "team.ceo.description": "Apasionado por los negocios y emprendedor. Con una larga y sólida trayectoria, Luis fundó TechNova con el objetivo de brindar el servicio más completo.",
+
+    "team.cto.name": "Manu C.",
     "team.cto.position": "CTO",
-    "team.cto.description":"   ",
+    "team.cto.description": "Fanático de la tecnología, Manu lidera el desarrollo de nuestras soluciones de IA, asegurándose de que sean prácticas y efectivas para nuestros clientes.",
+
     "team.marketing.name": "Ariel S.",
     "team.marketing.position": "MKT Director",
-    "team.marketing.description":"   ",
-      "team.AI.name": "Pedro P.",
-      "team.AI.position": "AI Developer",
-"team.AI.description": " "
-      ,
-      "team.web.name": "Ivan C.",
-      "team.web.position": "WEB Developer",
-      "team.web.description":"   "
-      ,
-  
-    },
+    "team.marketing.description": "Ariel crea campañas que conectan con la audiencia hispana, usando su conocimiento del mercado para generar impacto real.",
+
+    "team.AI.name": "Pedro P.",
+    "team.AI.position": "AI Developer",
+    "team.AI.description": "Pedro es el cerebro detrás de nuestros chatbots, trabajando para que entiendan y respondan como un verdadero amigo.",
+
+    "team.web.name": "Ivan C.",
+    "team.web.position": "WEB Developer",
+    "team.web.description": "Ivan diseña sitios web que son fáciles de usar y atractivos, ayudando a nuestros clientes a destacar en línea.",
+  },
   en: {
     // Navbar
     "nav.home": "Home",
@@ -203,23 +203,23 @@ const translations = {
 
     "team.ceo.name": "Luis H.",
     "team.ceo.position": "CEO & Founder",
-    "team.ceo.description":
-      " Founded TechNova AI after identifying the technology gap in the Hispanic market. Has led AI projects for Fortune 500 companies. Passionate about democratizing advanced technology for Hispanic businesses.",
+    "team.ceo.description": "Business enthusiast and entrepreneur. With years of experience, Luis started TechNova to offer top-notch services.",
 
-    "team.cto.name": "Ana Martínez",
+    "team.cto.name": "Manu C.",
     "team.cto.position": "CTO",
-    "team.cto.description":
-      "Programming prodigy who coded her first chatbot at 16. PhD in Artificial Intelligence from Stanford. Before joining us, she led engineering teams at Amazon and created NLP algorithms specifically optimized for Latin American dialects and conversational Spanish.",
+    "team.cto.description": "Tech lover, Manu leads the creation of our AI solutions, making sure they’re practical and effective for our clients.",
 
     "team.marketing.name": "Ariel S.",
     "team.marketing.position": "Marketing Director",
-    "team.marketing.description":
-      "Pioneer in multicultural marketing, Expert in Latino consumer behavior, combines data analysis with cultural insights to create strategies that authentically resonate with Hispanic audiences.",
+    "team.marketing.description": "Ariel builds campaigns that click with Hispanic audiences, using market know-how to make a real impact.",
 
-    "team.security.name": "Ivan G.",
-    "team.security.position": "Head of Development",
-    "team.security.description":
-      "Former security consultant for the U.S. government and certified in CISSP, CEH, and blockchain. Specialized in data protection for retail and fintech. Has thwarted over 200 cyberattack attempts and developed security protocols adopted internationally. Advocate for digital privacy as a fundamental right.",
+    "team.AI.name": "Pedro P.",
+    "team.AI.position": "AI Developer",
+    "team.AI.description": "Pedro is the mastermind behind our chatbots, working to make them understand and respond like a true friend.",
+
+    "team.web.name": "Ivan C.",
+    "team.web.position": "WEB Developer",
+    "team.web.description": "Ivan crafts user-friendly and eye-catching websites, helping our clients shine online.",
   },
 }
 

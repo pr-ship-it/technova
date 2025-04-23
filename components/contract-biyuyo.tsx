@@ -3,7 +3,9 @@
 import { useState } from "react"
 import type { Partner } from "@/types/contract"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Button } from "@/components/ui/button" // Asumiendo que usas el componente Button de Shadcn
+import { Button } from "@/components/ui/button"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 
 interface ContractContentProps {
   partners: Partner[]
@@ -11,10 +13,11 @@ interface ContractContentProps {
 }
 
 export function ContractContent({ partners, signingPartners }: ContractContentProps) {
-  // Estado local para manejar los socios y simular cambios
   const [displayPartners, setDisplayPartners] = useState(signingPartners ?? partners)
+  const [copied, setCopied] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [copiedText, setCopiedText] = useState("")
 
-  // Función para simular la firma de un socio
   const handleSign = (partnerId: number) => {
     setDisplayPartners(prev =>
       prev.map(partner =>
@@ -22,11 +25,24 @@ export function ContractContent({ partners, signingPartners }: ContractContentPr
           ? {
               ...partner,
               signed: true,
-              signature_date: new Date().toISOString(), // Simula la fecha de firma
+              signatureDate: new Date(),
             }
           : partner
       )
     )
+  }
+
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true)
+      setCopiedText(text)
+      setIsModalOpen(true)
+      setTimeout(() => setCopied(false), 2000)
+    }).catch((err) => {
+      console.error("Error al copiar:", err)
+      setIsModalOpen(true)
+      setCopiedText("Error al copiar el texto")
+    })
   }
 
   const firstThreePartners = displayPartners.slice(0, 3)
@@ -37,7 +53,6 @@ export function ContractContent({ partners, signingPartners }: ContractContentPr
       <section className="mb-8">
         <h3 className="text-xl font-semibold text-gold-500 mb-6">Socios</h3>
 
-        {/* Primera fila: primeros 3 socios */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
           {firstThreePartners.map((partner) => (
             <div
@@ -69,7 +84,6 @@ export function ContractContent({ partners, signingPartners }: ContractContentPr
           ))}
         </div>
 
-        {/* Segunda fila: últimos 2 socios centrados */}
         <div className="flex justify-center gap-4 sm:gap-8">
           {lastTwoPartners.map((partner) => (
             <div
@@ -138,15 +152,57 @@ export function ContractContent({ partners, signingPartners }: ContractContentPr
           <AccordionTrigger className="text-xl font-semibold text-gold-500">4. Pago del servicio</AccordionTrigger>
           <AccordionContent className="text-white/90 leading-relaxed">
             <ul className="list-disc pl-5 mt-2 space-y-1">
-              <li><strong>El pago será realizado a la billetera RED TRON número:</strong></li>
-              <li><strong style={{ color: "orange" }}>TJetmQE1b3vxMnnSkbHUGpRgS7oVFC5Dje</strong></li>
-              <li><strong>Tambien disponemos de cuenta bancaria STP TechNova Ai:</strong></li>
-              <li><strong style={{ color: "orange" }}>Cuenta clave: 646180146003580024</strong></li>
+              <li>El pago será realizado a la billetera RED TRON número:</li>
+              <li className="list-none flex items-center justify-between">
+                <strong className="text-orange-500">
+                  TJetmQE1b3vxMnnSkbHUGpRgS7oVFC5Dje
+                </strong>
+                <button
+                  onClick={() => handleCopy('TJetmQE1b3vxMnnSkbHUGpRgS7oVFC5Dje')}
+                  className="ml-8 text-yellow-400 hover:opacity-60"
+                >
+                  <ContentCopyIcon />
+                </button>
+              </li>
+              <li>También disponemos de cuenta bancaria STP TechNova Ai:</li>
+              <li className="list-none flex items-center justify-between">
+                <strong className="text-orange-500">
+                  Cuenta clave: 646180146003580024
+                </strong>
+                <button
+                  onClick={() => handleCopy('646180146003580024')}
+                  className=" text-yellow-400 hover:opacity-60"
+                >
+                  <ContentCopyIcon />
+                </button>
+              </li>
               <li>Recuerda enviar una captura de pantalla cuando el pago sea realizado.</li>
             </ul>
+            <h2 style={{ textAlign: "end", fontSize: "20px", fontWeight: "bold" }}>
+              Costo total: $15.000MXN (756.79 USDT)
+            </h2>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
+
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="bg-blue-900 text-white border border-gold-500">
+          <DialogHeader>
+            <DialogTitle>Texto Copiado</DialogTitle>
+            <DialogDescription className="text-white/90">
+          
+               Se ha copiado el texto: {copiedText}
+
+            </DialogDescription>
+          </DialogHeader>
+          <Button
+            onClick={() => setIsModalOpen(false)}
+            className="bg-gold-500 hover:bg-gold-600 text-white"
+          >
+            Cerrar
+          </Button>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
