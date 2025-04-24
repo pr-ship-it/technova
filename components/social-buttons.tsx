@@ -9,7 +9,7 @@ import { useMobile } from "@/hooks/use-mobile"
 export function SocialButtonsRow() {
   return (
     <div className="social-buttons-row">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-button facebook">
+      <a href="https://www.facebook.com/share/1FdYNEEC3K/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="social-button facebook">
         <Facebook size={18} />
       </a>
       <a href="https://x.com/TechNovaAI65057" target="_blank" rel="noopener noreferrer" className="social-button twitter">
@@ -32,7 +32,7 @@ export function SocialButtonsColumn() {
 
   return (
     <div className="social-buttons-column">
-      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-button facebook">
+      <a href="https://www.facebook.com/share/1FdYNEEC3K/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="social-button facebook">
         <Facebook size={20} />
       </a>
       <a href="https://x.com/TechNovaAI65057" target="_blank" rel="noopener noreferrer" className="social-button twitter">
@@ -63,7 +63,7 @@ export function FloatingSocialButton() {
 
       {isOpen && (
         <div className="floating-social-menu">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-button facebook">
+          <a href="https://www.facebook.com/share/1FdYNEEC3K/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="social-button facebook">
             <Facebook size={20} />
           </a>
           <a href="https://x.com/TechNovaAI65057" target="_blank" rel="noopener noreferrer" className="social-button twitter">
