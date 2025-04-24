@@ -35,11 +35,11 @@
              <ul className="space-y-2 text-gray-400">
                <li className="flex items-center">
                  <Mail size={16} className="mr-2 text-blue-500" />
-                 <span>info@aismarttech.com</span>
+                 <span>info@techNovaAi.com</span>
                </li>
                <li className="flex items-center">
                  <Phone size={16} className="mr-2 text-blue-500" />
-                 <span>+1 (555) 123-4567</span>
+                 <span>+52 (998) 9071829</span>
                </li>
              </ul>
              <div className="mt-4">

@@ -16,7 +16,7 @@ const translations = {
     "nav.home": "Inicio",
     "nav.services": "Servicios",
     "nav.about": "Nosotros",
-   
+    "nav.contact": "Contacto",
     "nav.team": "Reseñas",
 
     // Hero
