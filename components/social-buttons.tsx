@@ -71,15 +71,13 @@ export function FloatingSocialButton() {
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-button facebook">
             <Facebook size={20} />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-button twitter">
+          <a href="https://x.com/TechNovaAI65057" target="_blank" rel="noopener noreferrer" className="social-button twitter">
             <X size={20} />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-button instagram">
+          <a href="https://www.instagram.com/p/DIzu4ogTh38/?igsh=MTV2cGNsbWdseGh2Zg==" target="_blank" rel="noopener noreferrer" className="social-button instagram">
             <Instagram size={20} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-button linkedin">
-            <Linkedin size={20} />
-          </a>
+        
         </div>
       )}
     </div>
