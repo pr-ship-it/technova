@@ -10,52 +10,43 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Mensaje inválido" }, { status: 400 });
     }
 
-    console.log("Enviando solicitud a Hugging Face:", message);
+    console.log("Enviando solicitud a DeepSeek:", message);
 
-    const systemPrompt = `
-      Eres un asistente de TechNova AI, una empresa de chatbots, automatizaciones, IA, páginas web y marketing digital. 
-      Responde en español, de forma breve (1 frase), amable y profesional. solo responde de forma precisa a lo que te pida el cliente. 
-      Para saludos como "Hola", di solo "¡Hola! ¿En qué te ayudo?" no respondas de mas ni digas los servicios que tienes a no ser que te lo pidan explicitamente como "que servicios tienes" o te pidan alguno de los servicios que tenemos disponibles. 
-      Si piden asesoramiento, responde "Cuéntame tu idea" y analiza su respuesta para sugerir un servicio (chatbots, automatizaciones, web, marketing,ia). PERO NO SE LOS OFREZCAS SIN QUE TE LO PIDA. intenta ser lo mas corto posible con las respuestas que utilices.
-      No listes todos los servicios a menos que lo pidan explícitamente.
-      
-      
-      Mensaje del cliente: ${message}
-    `;
-
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer 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`,
-        },
-        body: JSON.stringify({
-          inputs: `<s>[INST] ${systemPrompt} [/INST]`,
-          parameters: {
-            max_new_tokens: 50, // Limita a ~1-2 frases
-            temperature: 0.7,
-            return_full_text: false,
+    const response = await fetch("https://api.deepseek.com/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer sk-84f6f76f4bac4b408395056e570ba4c8`,
+      },
+      body: JSON.stringify({
+        model: "deepseek-chat",
+        messages: [
+          {
+            role: "system",
+            content:
+              "Eres un asistente de TechNova AI, expertos en chatbots, automatizaciones, páginas web y marketing digital. Responde en español, de forma breve (1-2 frases), amable y profesional. Para saludos como 'Hola', di '¡Hola! ¿En qué te ayudo?'. Si piden asesoramiento, responde 'Cuéntame tu idea' y sugiere un servicio SOLO tras analizar su respuesta. No listes todos los servicios salvo que lo pidan. si busca asesoramiento por un humano brindales nuestro correo ",
           },
-        }),
-      }
-    );
+          { role: "user", content: message },
+        ],
+        max_tokens: 50, // Limita a ~1-2 frases
+        temperature: 0.7,
+      }),
+    });
 
     const data = await response.json();
 
-    console.log("Respuesta de Hugging Face:", data);
+    console.log("Respuesta de DeepSeek:", data);
 
     if (!response.ok) {
       console.error("❌ Error:", data);
       return NextResponse.json({ error: data.error?.message || "Error desconocido" }, { status: response.status });
     }
 
-    if (data && data[0]?.generated_text) {
-      return NextResponse.json({ content: data[0].generated_text.trim() });
+    if (data.choices && data.choices[0]?.message?.content) {
+      return NextResponse.json({ content: data.choices[0].message.content.trim() });
     }
 
-    console.error("❌ Sin generated_text:", data);
+    console.error("❌ Sin contenido:", data);
     return NextResponse.json({ error: "Respuesta no válida" }, { status: 500 });
   } catch (error) {
     console.error("❌ Error en la API:", error);
