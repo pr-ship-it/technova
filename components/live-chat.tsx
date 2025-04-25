@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { MessageSquare, X, Send, Minimize2, Maximize2 } from "lucide-react"
+import type React from "react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MessageSquare, X, Send, Minimize2, Maximize2 } from "lucide-react";
 
 interface Message {
-  id: number
-  text: string
-  sender: "user" | "bot"
-  timestamp: Date
+  id: number;
+  text: string;
+  sender: "user" | "bot";
+  timestamp: Date;
 }
 
 export default function LiveChat() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isMinimized, setIsMinimized] = useState(false)
-  const [message, setMessage] = useState("")
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -23,79 +23,61 @@ export default function LiveChat() {
       sender: "bot",
       timestamp: new Date(),
     },
-  ])
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  ]);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // 🔥 CONSULTA A OPENAI
   const fetchOpenAIResponse = async (userMessage: string): Promise<string> => {
     try {
-      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      const response = await fetch("/api/openai", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer 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`, // ⚠️ Reemplaza esto con tu propia API Key
-        },
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo",
-          messages: [{ role: "user", content: userMessage }],
-          temperature: 0.7,
-        }),
-      })
-
-      
-
-      const data = await response.json()
-
-   
-
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage }),
+      });
+      const data = await response.json();
       if (!response.ok) {
-        console.error("❌ Error de OpenAI:", data)
-        return `Lo siento, hubo un error: ${data.error?.message || "desconocido"}`
+        console.error("❌ Error:", data);
+        return `Lo siento, hubo un error: ${data.error || "desconocido"}`;
       }
-      if (data.choices && data.choices.length > 0) {
-        return data.choices[0].message.content.trim()
-      } else {
-        return "Lo siento, hubo un error al procesar tu mensaje."
-      }
+      return data.content || "Respuesta no válida";
     } catch (error) {
-      return "Error al conectar con el asistente. Inténtalo más tarde."
+      console.error("❌ Error al conectar:", error);
+      return "Error al conectar con el asistente. Inténtalo más tarde.";
     }
-  }
+  };
 
   const handleSendMessage = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!message.trim()) return
+    e.preventDefault();
+    if (!message.trim()) return;
 
     const userMessage = {
       id: messages.length + 1,
       text: message,
-      sender: "user" as const,
+      sender: "user",
       timestamp: new Date(),
-    }
+    };
 
-    setMessages((prev) => [...prev, userMessage])
-    setMessage("")
+    setMessages((prev) => [...prev, userMessage]);
+    setMessage("");
 
-    const responseText = await fetchOpenAIResponse(message)
+    const responseText = await fetchOpenAIResponse(message);
 
     const botResponse = {
       id: messages.length + 2,
       text: responseText,
-      sender: "bot" as const,
+      sender: "bot",
       timestamp: new Date(),
-    }
+    };
 
-    setMessages((prev) => [...prev, botResponse])
-  }
+    setMessages((prev) => [...prev, botResponse]);
+  };
 
-  // Auto scroll
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [messages])
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-  }
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
 
   return (
     <>
@@ -190,5 +172,5 @@ export default function LiveChat() {
         )}
       </AnimatePresence>
     </>
-  )
+  );
 }
