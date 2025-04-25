@@ -33,7 +33,7 @@ export default function LiveChat() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`, // ⚠️ Reemplaza esto con tu propia API Key
+          Authorization: `Bearer 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`, // ⚠️ Reemplaza esto con tu propia API Key
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
