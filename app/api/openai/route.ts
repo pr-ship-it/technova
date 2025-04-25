@@ -13,19 +13,20 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("Clave de API:", process.env.DEEPSEEK_API_KEY ? "Configurada" : "No encontrada");
+    console.log("Clave de API:", "sk-bf69b4275746463ea056c2624ffd95ca" ? "Configurada" : "No encontrada");
     console.log("Enviando solicitud a DeepSeek con mensaje:", message);
 
     const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer sk-605406ab6ed141579f1bf68a675659a3`,
+        Authorization: `Bearer sk-bf69b4275746463ea056c2624ffd95ca`,
       },
       body: JSON.stringify({
-        model: "deepseek-r1", // Modelo gratuito de DeepSeek
+        model: "deepseek-chat", // Cambiado a deepseek-chat (DeepSeek-V3)
         messages: [{ role: "user", content: message }],
         temperature: 0.7,
+        stream: false, // Explícitamente no streaming
       }),
     });
 
