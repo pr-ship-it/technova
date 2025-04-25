@@ -142,7 +142,7 @@ export default function LiveChat() {
                           msg.sender === "user" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-100"
                         }`}
                       >
-                        <p className="text-sm">{msg.text}</p>
+                        <p className="text-xs">{msg.text}</p>
                         <p className="text-xs mt-1 opacity-70 text-right">{formatTime(msg.timestamp)}</p>
                       </div>
                     </div>
