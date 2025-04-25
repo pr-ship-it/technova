@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer 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`, // Clave de entorno
+        Authorization: `Bearer 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`, // Clave de entorno
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
