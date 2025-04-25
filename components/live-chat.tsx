@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { MessageSquare, X, Send, Minimize2, Maximize2 } from "lucide-react"
@@ -20,60 +19,44 @@ export default function LiveChat() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "¡Hola! Soy el asistente virtual de TechNova AI. ¿En qué puedo ayudarte hoy?",
+      text: "¡Hola! Soy el asistente virtual de AI Smart Technology. ¿En qué puedo ayudarte hoy?",
       sender: "bot",
       timestamp: new Date(),
     },
   ])
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Respuestas automáticas basadas en palabras clave
-  const autoResponses = [
-    {
-      keywords: ["precio", "costo", "tarifa", "pagar", "valor"],
-      response:
-        "Nuestros precios varían según las necesidades específicas de tu negocio. ¿Te gustaría que un asesor te contacte para una cotización personalizada?",
-    },
-    {
-      keywords: ["horario", "atención", "atienden", "disponible"],
-      response: "Nuestro horario de atención es de lunes a viernes de 9:00 AM a 6:00 PM (GMT-5).",
-    },
-    {
-      keywords: ["demo", "prueba", "demostración", "probar"],
-      response:
-        "¡Claro! Ofrecemos demostraciones gratuitas de nuestros servicios. Por favor, déjanos tu correo electrónico y te contactaremos para agendar una sesión.",
-    },
-    {
-      keywords: ["contacto", "teléfono", "email", "correo", "llamar"],
-      response:
-        "Puedes contactarnos al +52-998-9071829 o enviarnos un correo a info@aismarttech.com. También puedes usar nuestro formulario de contacto en la página.",
-    },
-    {
-      keywords: ["gracias", "thank", "thanks"],
-      response: "¡De nada! Estamos aquí para ayudarte. ¿Hay algo más en lo que pueda asistirte?",
-    },
-  ]
+  // 🔥 CONSULTA A OPENAI
+  const fetchOpenAIResponse = async (userMessage: string): Promise<string> => {
+    try {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer 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`, // ⚠️ Reemplaza esto con tu propia API Key
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [{ role: "user", content: userMessage }],
+          temperature: 0.7,
+        }),
+      })
 
-  // Función para generar respuesta automática
-  const generateAutoResponse = (userMessage: string): string => {
-    const lowerCaseMessage = userMessage.toLowerCase()
-
-    for (const item of autoResponses) {
-      if (item.keywords.some((keyword) => lowerCaseMessage.includes(keyword))) {
-        return item.response
+      const data = await response.json()
+      if (data.choices && data.choices.length > 0) {
+        return data.choices[0].message.content.trim()
+      } else {
+        return "Lo siento, hubo un error al procesar tu mensaje."
       }
+    } catch (error) {
+      return "Error al conectar con el asistente. Inténtalo más tarde."
     }
-
-    return "Gracias por tu mensaje. Un miembro de nuestro equipo te responderá a la brevedad. Si necesitas asistencia inmediata, puedes llamarnos al +52-998-9071829."
   }
 
-  // Función para enviar mensaje
-  const handleSendMessage = (e: React.FormEvent) => {
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault()
-
     if (!message.trim()) return
 
-    // Agregar mensaje del usuario
     const userMessage = {
       id: messages.length + 1,
       text: message,
@@ -84,32 +67,29 @@ export default function LiveChat() {
     setMessages((prev) => [...prev, userMessage])
     setMessage("")
 
-    // Simular respuesta del bot después de un breve retraso
-    setTimeout(() => {
-      const botResponse = {
-        id: messages.length + 2,
-        text: generateAutoResponse(message),
-        sender: "bot" as const,
-        timestamp: new Date(),
-      }
+    const responseText = await fetchOpenAIResponse(message)
 
-      setMessages((prev) => [...prev, botResponse])
-    }, 1000)
+    const botResponse = {
+      id: messages.length + 2,
+      text: responseText,
+      sender: "bot" as const,
+      timestamp: new Date(),
+    }
+
+    setMessages((prev) => [...prev, botResponse])
   }
 
-  // Auto-scroll al último mensaje
+  // Auto scroll
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
-  // Formatear hora
   const formatTime = (date: Date) => {
     return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   }
 
   return (
     <>
-      {/* Botón flotante para abrir el chat */}
       {!isOpen && (
         <motion.button
           onClick={() => setIsOpen(true)}
@@ -124,7 +104,6 @@ export default function LiveChat() {
         </motion.button>
       )}
 
-      {/* Ventana de chat */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -136,7 +115,6 @@ export default function LiveChat() {
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
-            {/* Encabezado del chat */}
             <div className="bg-gradient-to-r from-blue-600 to-blue-500 p-3 flex justify-between items-center">
               <div className="flex items-center">
                 <div className="w-2 h-2 rounded-full bg-green-400 mr-2"></div>
@@ -160,7 +138,6 @@ export default function LiveChat() {
               </div>
             </div>
 
-            {/* Cuerpo del chat */}
             {!isMinimized && (
               <>
                 <div className="h-80 overflow-y-auto p-4 bg-gray-800">
@@ -182,7 +159,6 @@ export default function LiveChat() {
                   <div ref={messagesEndRef} />
                 </div>
 
-                {/* Formulario para enviar mensajes */}
                 <form onSubmit={handleSendMessage} className="p-3 bg-gray-900 border-t border-gray-700 flex">
                   <input
                     type="text"
