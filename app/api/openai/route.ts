@@ -19,6 +19,7 @@ export async function POST(request: Request) {
       Si piden asesoramiento, responde "Cuéntame tu idea" y analiza su respuesta para sugerir un servicio (chatbots, automatizaciones, web, marketing). 
       No listes todos los servicios a menos que lo pidan explícitamente.
       
+      
       Mensaje del cliente: ${message}
     `;
 
@@ -28,7 +29,7 @@ export async function POST(request: Request) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
+          Authorization: `Bearer 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`,
         },
         body: JSON.stringify({
           inputs: `<s>[INST] ${systemPrompt} [/INST]`,
