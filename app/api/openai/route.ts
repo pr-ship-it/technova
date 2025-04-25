@@ -18,7 +18,7 @@ export async function POST(request: Request) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`, // Clave de entorno
+        Authorization: `Bearer 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`, // Clave de entorno
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
