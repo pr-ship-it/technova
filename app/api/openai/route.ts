@@ -7,20 +7,17 @@ export async function POST(request: Request) {
 
     if (!message || typeof message !== "string") {
       console.error("❌ Mensaje inválido:", message);
-      return NextResponse.json(
-        { error: "Se requiere un mensaje válido" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Mensaje inválido" }, { status: 400 });
     }
 
-    console.log("Clave de API:"? "Configurada" : "No encontrada");
-    console.log("Enviando solicitud a Hugging Face con mensaje:", message);
+    console.log("Enviando solicitud a Hugging Face:", message);
 
-    // Prompt de sistema personalizado para tu negocio
     const systemPrompt = `
-      Eres un asistente de TechNova AI, una tienda de servicios online de creacion de chatbots para instagram, whatsapp o chat web, ademas tienes servicios de seguridad blockchain, marketing digital y creacion de webs utilizando las mejores tecnologias de desarrollo web. 
-      Ayuda a los clientes con información sobre servicios (creacion de chatbots, automatizaciones, creacion de webs,marketing digital,seguridad blockchain), 
-      precios, contacto, sobre nosotros, y por que deberia contratarnos. Usa un tono amable y profesional, y responde en español.
+      Eres un asistente de TechNova AI, una empresa de chatbots, automatizaciones, páginas web y marketing digital. 
+      Responde en español, de forma breve (1-2 frases), amable y profesional. 
+      Para saludos como "Hola", di solo "¡Hola! ¿En qué te ayudo?". 
+      Si piden asesoramiento, responde "Cuéntame tu idea" y analiza su respuesta para sugerir un servicio (chatbots, automatizaciones, web, marketing). 
+      No listes todos los servicios a menos que lo pidan explícitamente.
       
       Mensaje del cliente: ${message}
     `;
@@ -31,14 +28,14 @@ export async function POST(request: Request) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${process.env.HUGGINGFACE_API_KEY}`,
         },
         body: JSON.stringify({
           inputs: `<s>[INST] ${systemPrompt} [/INST]`,
           parameters: {
-            max_new_tokens: 200, // Limita la longitud para ahorrar cuota
-            temperature: 0.7, // Respuestas coherentes
-            return_full_text: false, // Solo la respuesta generada
+            max_new_tokens: 50, // Limita a ~1-2 frases
+            temperature: 0.7,
+            return_full_text: false,
           },
         }),
       }
@@ -49,28 +46,18 @@ export async function POST(request: Request) {
     console.log("Respuesta de Hugging Face:", data);
 
     if (!response.ok) {
-      console.error("❌ Error de Hugging Face:", data);
-      return NextResponse.json(
-        { error: data.error?.message || "Error desconocido" },
-        { status: response.status }
-      );
+      console.error("❌ Error:", data);
+      return NextResponse.json({ error: data.error?.message || "Error desconocido" }, { status: response.status });
     }
 
     if (data && data[0]?.generated_text) {
-      const content = data[0].generated_text.trim();
-      return NextResponse.json({ content });
-    } else {
-      console.error("❌ No se encontró generated_text en la respuesta:", data);
-      return NextResponse.json(
-        { error: "No se recibió una respuesta válida" },
-        { status: 500 }
-      );
+      return NextResponse.json({ content: data[0].generated_text.trim() });
     }
+
+    console.error("❌ Sin generated_text:", data);
+    return NextResponse.json({ error: "Respuesta no válida" }, { status: 500 });
   } catch (error) {
     console.error("❌ Error en la API:", error);
-    return NextResponse.json(
-      { error: "Error al conectar con el asistente" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Error al conectar" }, { status: 500 });
   }
 }
