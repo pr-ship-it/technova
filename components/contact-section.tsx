@@ -17,10 +17,10 @@ export default function ContactSection() {
 
     emailjs
       .sendForm(
-        "service_xounycs",     // <- Reemplaza
+        "service_00zfxyb",     // <- Reemplaza
         "template_xzqxmw8",    // <- Reemplaza
         formRef.current,
-        "0Fay7kTqrwuus6SWf"      // <- Reemplaza
+        "J8bng91_YS9KTppM-siA7"      // <- Reemplaza
       )
       .then(() => {
         setIsSubmitted(true)
