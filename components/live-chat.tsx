@@ -131,18 +131,18 @@ export default function LiveChat() {
 
             {!isMinimized && (
               <>
-                <div className="h-80 overflow-y-auto p-4 bg-gray-800">
+                <div className="min-h-80 max-h-[500px] overflow-y-auto p-4 bg-gray-800">
                   {messages.map((msg) => (
                     <div
                       key={msg.id}
                       className={`mb-4 flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                     >
                       <div
-                        className={`max-w-[80%] rounded-lg p-3 ${
+                        className={`max-w-[90%] rounded-lg p-3 break-words ${
                           msg.sender === "user" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-100"
                         }`}
                       >
-                        <p className="text-xs">{msg.text}</p>
+                        <p className="text-sm whitespace-normal">{msg.text}</p>
                         <p className="text-xs mt-1 opacity-70 text-right">{formatTime(msg.timestamp)}</p>
                       </div>
                     </div>
