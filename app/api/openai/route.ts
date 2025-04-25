@@ -3,25 +3,27 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    // Obtener el mensaje del cuerpo de la solicitud
     const { message } = await request.json();
 
     if (!message || typeof message !== "string") {
+      console.error("❌ Mensaje inválido:", message);
       return NextResponse.json(
         { error: "Se requiere un mensaje válido" },
         { status: 400 }
       );
     }
 
-    // Hacer la solicitud a la API de OpenAI
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    console.log("Clave de API:", process.env.DEEPSEEK_API_KEY ? "Configurada" : "No encontrada");
+    console.log("Enviando solicitud a DeepSeek con mensaje:", message);
+
+    const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer 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`, // Clave de entorno
+        Authorization: `Bearer sk-605406ab6ed141579f1bf68a675659a3`,
       },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
+        model: "deepseek-r1", // Modelo gratuito de DeepSeek
         messages: [{ role: "user", content: message }],
         temperature: 0.7,
       }),
@@ -29,8 +31,10 @@ export async function POST(request: Request) {
 
     const data = await response.json();
 
+    console.log("Respuesta de DeepSeek:", data);
+
     if (!response.ok) {
-      console.error("❌ Error de OpenAI:", data);
+      console.error("❌ Error de DeepSeek:", data);
       return NextResponse.json(
         { error: data.error?.message || "Error desconocido" },
         { status: response.status }
@@ -41,6 +45,7 @@ export async function POST(request: Request) {
       const content = data.choices[0].message.content.trim();
       return NextResponse.json({ content });
     } else {
+      console.error("❌ No se encontraron choices en la respuesta:", data);
       return NextResponse.json(
         { error: "No se recibió una respuesta válida" },
         { status: 500 }
