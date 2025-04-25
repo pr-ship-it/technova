@@ -13,40 +13,45 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("Clave de API:", "sk-bf69b4275746463ea056c2624ffd95ca" ? "Configurada" : "No encontrada");
-    console.log("Enviando solicitud a DeepSeek con mensaje:", message);
+    console.log("Clave de API:" ? "Configurada" : "No encontrada");
+    console.log("Enviando solicitud a Hugging Face con mensaje:", message);
 
-    const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer sk-bf69b4275746463ea056c2624ffd95ca`,
-      },
-      body: JSON.stringify({
-        model: "deepseek-chat", // Cambiado a deepseek-chat (DeepSeek-V3)
-        messages: [{ role: "user", content: message }],
-        temperature: 0.7,
-        stream: false, // Explícitamente no streaming
-      }),
-    });
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer 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`,
+        },
+        body: JSON.stringify({
+          inputs: `<s>[INST] ${message} [/INST]`, // Formato de instrucción para Mixtral
+          parameters: {
+            max_new_tokens: 200, // Limita la longitud de la respuesta
+            temperature: 0.7,
+            return_full_text: false, // Solo devuelve la respuesta generada
+          },
+        }),
+      }
+    );
 
     const data = await response.json();
 
-    console.log("Respuesta de DeepSeek:", data);
+    console.log("Respuesta de Hugging Face:", data);
 
     if (!response.ok) {
-      console.error("❌ Error de DeepSeek:", data);
+      console.error("❌ Error de Hugging Face:", data);
       return NextResponse.json(
         { error: data.error?.message || "Error desconocido" },
         { status: response.status }
       );
     }
 
-    if (data.choices && data.choices.length > 0) {
-      const content = data.choices[0].message.content.trim();
+    if (data && data[0]?.generated_text) {
+      const content = data[0].generated_text.trim();
       return NextResponse.json({ content });
     } else {
-      console.error("❌ No se encontraron choices en la respuesta:", data);
+      console.error("❌ No se encontró generated_text en la respuesta:", data);
       return NextResponse.json(
         { error: "No se recibió una respuesta válida" },
         { status: 500 }
