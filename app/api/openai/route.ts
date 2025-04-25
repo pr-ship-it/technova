@@ -1,4 +1,3 @@
-// src/app/api/openai/route.ts
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -24,11 +23,11 @@ export async function POST(request: Request) {
           {
             role: "system",
             content:
-              "Eres un asistente de TechNova AI, expertos en chatbots, automatizaciones, páginas web y marketing digital. Responde en español, de forma breve (1-2 frases), amable y profesional. Para saludos como 'Hola', di '¡Hola! ¿En qué te ayudo?'. Si piden asesoramiento, responde 'Cuéntame tu idea' y sugiere un servicio SOLO tras analizar su respuesta. No listes todos los servicios salvo que lo pidan. si busca asesoramiento por un humano brindales nuestro correo ",
+              "Eres un asistente de TechNova AI, expertos en chatbots, automatizaciones, páginas web y marketing digital. Responde en español, de forma breve (1-2 frases), amable y profesional. Para saludos como 'Hola', di '¡Hola! ¿En qué te ayudo?'. Si piden asesoramiento, responde 'Cuéntame tu idea' y sugiere un servicio SOLO tras analizar su respuesta. No listes todos los servicios salvo que lo pidan. Si busca asesoramiento por un humano, bríndales nuestro correo.",
           },
           { role: "user", content: message },
         ],
-        max_tokens: 50, // Limita a ~1-2 frases
+        max_tokens: 100, // Aumentado para respuestas más completas
         temperature: 0.7,
       }),
     });
