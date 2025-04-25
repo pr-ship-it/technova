@@ -13,8 +13,17 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("Clave de API:" ? "Configurada" : "No encontrada");
+    console.log("Clave de API:"? "Configurada" : "No encontrada");
     console.log("Enviando solicitud a Hugging Face con mensaje:", message);
+
+    // Prompt de sistema personalizado para tu negocio
+    const systemPrompt = `
+      Eres un asistente de TechNova AI, una tienda de servicios online de creacion de chatbots para instagram, whatsapp o chat web, ademas tienes servicios de seguridad blockchain, marketing digital y creacion de webs utilizando las mejores tecnologias de desarrollo web. 
+      Ayuda a los clientes con información sobre servicios (creacion de chatbots, automatizaciones, creacion de webs,marketing digital,seguridad blockchain), 
+      precios, contacto, sobre nosotros, y por que deberia contratarnos. Usa un tono amable y profesional, y responde en español.
+      
+      Mensaje del cliente: ${message}
+    `;
 
     const response = await fetch(
       "https://api-inference.huggingface.co/models/mistralai/Mixtral-8x7B-Instruct-v0.1",
@@ -25,11 +34,11 @@ export async function POST(request: Request) {
           Authorization: `Bearer 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`,
         },
         body: JSON.stringify({
-          inputs: `<s>[INST] ${message} [/INST]`, // Formato de instrucción para Mixtral
+          inputs: `<s>[INST] ${systemPrompt} [/INST]`,
           parameters: {
-            max_new_tokens: 200, // Limita la longitud de la respuesta
-            temperature: 0.7,
-            return_full_text: false, // Solo devuelve la respuesta generada
+            max_new_tokens: 200, // Limita la longitud para ahorrar cuota
+            temperature: 0.7, // Respuestas coherentes
+            return_full_text: false, // Solo la respuesta generada
           },
         }),
       }
