@@ -1,15 +1,20 @@
 "use client"
 
-import React, { useState, useRef, FormEvent } from "react"
+import React, { useState, useRef, useEffect, FormEvent } from "react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/context/language-context"
 import { Send, Check } from "lucide-react"
-import emailjs from "emailjs-com"
+import emailjs from "@emailjs/browser"
 
 export default function ContactSection() {
   const { t } = useLanguage()
   const [isSubmitted, setIsSubmitted] = useState(false)
   const formRef = useRef<HTMLFormElement>(null)
+
+  // Inicializar EmailJS con tu clave pública
+  useEffect(() => {
+    emailjs.init("0Fay7kTqrwuus6SWf") // ← reemplaza por tu PUBLIC KEY real
+  }, [])
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -17,12 +22,12 @@ export default function ContactSection() {
 
     emailjs
       .sendForm(
-        "service_00zfxyb",     // <- Reemplaza
-        "template_xzqxmw8",    // <- Reemplaza
-        formRef.current,
-        "J8bng91_YS9KTppM-siA7"      // <- Reemplaza
+        "service_00zfxyb",      // ← reemplaza por tu SERVICE ID real
+        "template_xzqxmw8",     // ← reemplaza por tu TEMPLATE ID real
+        formRef.current
       )
-      .then(() => {
+      .then((res) => {
+        console.log("Email enviado:", res)
         setIsSubmitted(true)
         formRef.current?.reset()
       })
