@@ -33,7 +33,7 @@ export default function LiveChat() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`, // ⚠️ Reemplaza esto con tu propia API Key
+          Authorization: `Bearer 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`, // ⚠️ Reemplaza esto con tu propia API Key
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
@@ -42,7 +42,16 @@ export default function LiveChat() {
         }),
       })
 
+      
+
       const data = await response.json()
+
+   
+
+      if (!response.ok) {
+        console.error("❌ Error de OpenAI:", data)
+        return `Lo siento, hubo un error: ${data.error?.message || "desconocido"}`
+      }
       if (data.choices && data.choices.length > 0) {
         return data.choices[0].message.content.trim()
       } else {
