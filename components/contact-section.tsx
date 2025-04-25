@@ -1,22 +1,35 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import React, { useState, useRef, FormEvent } from "react"
 import { motion } from "framer-motion"
 import { useLanguage } from "@/context/language-context"
 import { Send, Check } from "lucide-react"
+import emailjs from "emailjs-com"
 
 export default function ContactSection() {
   const { t } = useLanguage()
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    // Simulación de envío
-    setTimeout(() => {
-      setIsSubmitted(true)
-    }, 1000)
+    if (!formRef.current) return
+
+    emailjs
+      .sendForm(
+        "YOUR_SERVICE_ID",     // <- Reemplaza
+        "YOUR_TEMPLATE_ID",    // <- Reemplaza
+        formRef.current,
+        "YOUR_PUBLIC_KEY"      // <- Reemplaza
+      )
+      .then(() => {
+        setIsSubmitted(true)
+        formRef.current?.reset()
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error)
+        alert("Error al enviar el mensaje.")
+      })
   }
 
   return (
@@ -52,6 +65,7 @@ export default function ContactSection() {
             </motion.div>
           ) : (
             <form
+              ref={formRef}
               onSubmit={handleSubmit}
               className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-xl border border-gray-800"
             >
