@@ -289,9 +289,9 @@ export default function WebDesignSimulator() {
                     <label className="block text-sm font-medium text-gray-300 mb-2">Plantilla</label>
                     <div className="grid grid-cols-3 gap-2">
                       {[
-                        { id: 1, name: "Restaurante", image: "/modern-restaurant-website.png" },
-                        { id: 2, name: "Medicina", image: "/modern-medical-template.png" },
-                        { id: 3, name: "Tecnología", image: "/nebula-tech.png" },
+                        { id: 1, name: "Restaurante", image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745853992/modern-restaurant-website_weleyt.png" },
+                        { id: 2, name: "Medicina", image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745853991/modern-medical-template_axqift.png" },
+                        { id: 3, name: "Tecnología", image: "https://res.cloudinary.com/dllkefj8m/image/upload/v1745853992/nebula-tech_tc9i8c.png" },
                       ].map((template) => (
                         <div
                           key={template.id}
@@ -496,7 +496,7 @@ export default function WebDesignSimulator() {
                 >
                   <div className="w-full h-32 rounded-lg mb-3 overflow-hidden">
                     <img
-                      src={`/abstract-geometric-shapes.png?height=128&width=400&query=${templateInfo.type} website hero image`}
+                      src={`https://res.cloudinary.com/dllkefj8m/image/upload/v1745853992/nebula-tech_tc9i8c.png`}
                       alt="Hero image"
                       className="w-full h-full object-cover"
                     />
@@ -601,3 +601,4 @@ export default function WebDesignSimulator() {
     </div>
   )
 }
+
