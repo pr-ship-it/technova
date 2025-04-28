@@ -73,7 +73,7 @@ export default function HeroSection() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            <a href="#contact" className="cta-button group">
+            <a href="/contact" className="cta-button group">
               {t("hero.cta")}
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
             </a>
@@ -83,3 +83,4 @@ export default function HeroSection() {
     </section>
   )
 }
+
