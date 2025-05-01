@@ -10,6 +10,8 @@ import CookieConsent from "@/components/cookie-consent"
 import PerformanceOptimization from "@/components/performance-optimization"
 import Analytics from "@/components/analytics"
 import { Suspense } from "react"
+import Script from "next/script"
+import Head from "next/head"
 
 // Importar los componentes sociales individualmente
 import { SocialButtonsColumn } from "@/components/social-buttons"
@@ -31,7 +33,7 @@ export const metadata: Metadata = {
   description:
     "Transformamos negocios del sector retail hispano con inteligencia artificial, automatización, chatbots, marketing digital, blockchain y ciberseguridad.",
   keywords: "inteligencia artificial, IA, chatbots, marketing digital, ciberseguridad, blockchain, retail hispano",
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -41,6 +43,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <Head>
+        {/* Noscript para Meta Pixel */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=980549257589348&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+      </Head>
       <body className={`${exo2.variable} font-exo2`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           <LanguageProvider>
@@ -66,6 +80,26 @@ export default function RootLayout({
             {children}
           </LanguageProvider>
         </ThemeProvider>
+
+        {/* Meta Pixel Code */}
+        <Script
+          id="meta-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '980549257589348');
+              fbq('track', 'PageView');
+            `,
+          }}
+        />
       </body>
     </html>
   )
